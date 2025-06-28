@@ -1,0 +1,25 @@
+{
+  "name": "finance-tracker",
+  "version": "1.0.0",
+  "description": "Personal Finance Tracker with Unique Session Spaces",
+  "private": true,
+  "workspaces": [
+    "frontend",
+    "backend"
+  ],
+  "scripts": {
+    "dev": "concurrently \"yarn workspace finance-tracker-backend dev\" \"yarn workspace finance-tracker-frontend dev\"",
+    "build": "yarn workspace finance-tracker-backend build && yarn workspace finance-tracker-frontend build",
+    "test": "yarn workspace finance-tracker-backend test && yarn workspace finance-tracker-frontend test",
+    "lint": "yarn workspace finance-tracker-backend lint && yarn workspace finance-tracker-frontend lint",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\""
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "prettier": "^3.1.1"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "yarn": ">=1.22.0"
+  }
+} 
