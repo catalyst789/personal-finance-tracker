@@ -2,7 +2,7 @@ import express, { Request, Response, NextFunction } from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
 import morgan from 'morgan';
-import compression from 'compression';
+// import compression from 'compression';
 import dotenv from 'dotenv';
 import routes from './routes';
 
@@ -21,8 +21,8 @@ app.use(cors({
   credentials: true
 }));
 
-// Compression middleware
-app.use(compression());
+// Compression middleware - temporarily disabled due to TypeScript issues
+// app.use(compression());
 
 // Logging middleware
 if (process.env.NODE_ENV === 'development') {
@@ -52,7 +52,7 @@ app.use((err: any, req: Request, res: Response, next: NextFunction) => {
     });
   }
   
-  res.status(err.status || 500).json({
+  return res.status(err.status || 500).json({
     success: false,
     error: process.env.NODE_ENV === 'development' ? err.message : 'Internal server error'
   });
@@ -60,7 +60,7 @@ app.use((err: any, req: Request, res: Response, next: NextFunction) => {
 
 // 404 handler
 app.use('*', (req: Request, res: Response) => {
-  res.status(404).json({ 
+  return res.status(404).json({ 
     success: false, 
     error: 'Route not found' 
   });

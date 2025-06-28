@@ -17,9 +17,9 @@ router.get('/', [
       return res.status(400).json({ success: false, error: 'Missing spaceId parameter' });
     }
     const recurringTransactions = await RecurringTransactionModel.getRecurringTransactions(spaceId);
-    res.json({ success: true, data: recurringTransactions });
+    return res.json({ success: true, data: recurringTransactions });
   } catch (err) {
-    next(err);
+    return next(err);
   }
 });
 
@@ -40,9 +40,9 @@ router.post('/', [
       return res.status(400).json({ success: false, error: 'Missing spaceId parameter' });
     }
     const recurringTransaction = await RecurringTransactionModel.createRecurringTransaction(spaceId, req.body);
-    res.status(201).json({ success: true, data: recurringTransaction });
+    return res.status(201).json({ success: true, data: recurringTransaction });
   } catch (err) {
-    next(err);
+    return next(err);
   }
 });
 
@@ -65,9 +65,9 @@ router.put('/:transactionId', [
       return res.status(400).json({ success: false, error: 'Missing spaceId or transactionId parameter' });
     }
     const recurringTransaction = await RecurringTransactionModel.updateRecurringTransaction(spaceId, transactionId, req.body);
-    res.json({ success: true, data: recurringTransaction });
+    return res.json({ success: true, data: recurringTransaction });
   } catch (err) {
-    next(err);
+    return next(err);
   }
 });
 
@@ -83,9 +83,9 @@ router.delete('/:transactionId', [
       return res.status(400).json({ success: false, error: 'Missing spaceId or transactionId parameter' });
     }
     await RecurringTransactionModel.deleteRecurringTransaction(spaceId, transactionId);
-    res.status(204).send();
+    return res.status(204).send();
   } catch (err) {
-    next(err);
+    return next(err);
   }
 });
 
@@ -144,7 +144,7 @@ router.post('/process', [
       }
     }
     
-    res.json({ 
+    return res.json({ 
       success: true, 
       data: {
         processed: processedTransactions.length,
@@ -152,7 +152,7 @@ router.post('/process', [
       }
     });
   } catch (err) {
-    next(err);
+    return next(err);
   }
 });
 

@@ -10,5 +10,5 @@ export function validateRequest(req: Request, res: Response, next: NextFunction)
       details: errors.array(),
     });
   }
-  next();
+  return next();
 } 

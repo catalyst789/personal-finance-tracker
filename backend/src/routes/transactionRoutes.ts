@@ -30,7 +30,7 @@ router.get('/', [
       limit: req.query.limit ? Number(req.query.limit) : 10,
     };
     const result = await TransactionModel.getTransactions(spaceId, filters);
-    res.json({
+    return res.json({
       success: true,
       data: result.data,
       pagination: result.pagination,
@@ -39,7 +39,7 @@ router.get('/', [
       monthlyStats: result.monthlyStats
     });
   } catch (err) {
-    next(err);
+    return next(err);
   }
 });
 
@@ -88,9 +88,9 @@ router.post('/', [
       }
     }
     
-    res.status(201).json({ success: true, data: transaction });
+    return res.status(201).json({ success: true, data: transaction });
   } catch (err) {
-    next(err);
+    return next(err);
   }
 });
 
@@ -170,9 +170,9 @@ router.put('/:transactionId', [
       console.log(`[TransactionRoutes] Deleted recurring transaction entry for transaction ${transactionId} (changed to non-recurring)`);
     }
     
-    res.json({ success: true, data: transaction });
+    return res.json({ success: true, data: transaction });
   } catch (err) {
-    next(err);
+    return next(err);
   }
 });
 
@@ -188,9 +188,9 @@ router.delete('/:transactionId', [
       return res.status(400).json({ success: false, error: 'Missing spaceId or transactionId parameter' });
     }
     await TransactionModel.deleteTransaction(spaceId, transactionId);
-    res.status(204).send();
+    return res.status(204).send();
   } catch (err) {
-    next(err);
+    return next(err);
   }
 });
 

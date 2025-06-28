@@ -11,9 +11,5 @@
       "src": "/api/(.*)",
       "dest": "dist/index.js"
     }
-  ],
-  "env": {
-    "DATABASE_URL": "@database_url",
-    "NODE_ENV": "production"
-  }
+  ]
 } 

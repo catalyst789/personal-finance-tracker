@@ -19,9 +19,9 @@ router.get('/', [
     if (!budget) {
       return res.status(404).json({ success: false, error: 'Budget not found' });
     }
-    res.json({ success: true, data: budget });
+    return res.json({ success: true, data: budget });
   } catch (err) {
-    next(err);
+    return next(err);
   }
 });
 
@@ -37,9 +37,9 @@ router.post('/', [
       return res.status(400).json({ success: false, error: 'Missing spaceId parameter' });
     }
     const budget = await BudgetModel.setBudget(spaceId, req.body);
-    res.status(201).json({ success: true, data: budget });
+    return res.status(201).json({ success: true, data: budget });
   } catch (err) {
-    next(err);
+    return next(err);
   }
 });
 
@@ -55,9 +55,9 @@ router.put('/', [
       return res.status(400).json({ success: false, error: 'Missing spaceId parameter' });
     }
     const budget = await BudgetModel.setBudget(spaceId, req.body);
-    res.json({ success: true, data: budget });
+    return res.json({ success: true, data: budget });
   } catch (err) {
-    next(err);
+    return next(err);
   }
 });
 
@@ -72,9 +72,9 @@ router.delete('/', [
       return res.status(400).json({ success: false, error: 'Missing spaceId parameter' });
     }
     await BudgetModel.deleteBudget(spaceId);
-    res.status(204).send();
+    return res.status(204).send();
   } catch (err) {
-    next(err);
+    return next(err);
   }
 });
 

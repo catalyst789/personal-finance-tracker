@@ -9,9 +9,9 @@ const router = Router();
 router.post('/', async (req: Request, res: Response, next: NextFunction) => {
   try {
     const result = await SpaceModel.createSpace();
-    res.status(201).json({ success: true, data: result });
+    return res.status(201).json({ success: true, data: result });
   } catch (err) {
-    next(err);
+    return next(err);
   }
 });
 
@@ -29,9 +29,9 @@ router.get('/:spaceId', [
     if (!space) {
       return res.status(404).json({ success: false, error: 'Space not found' });
     }
-    res.json({ success: true, data: space });
+    return res.json({ success: true, data: space });
   } catch (err) {
-    next(err);
+    return next(err);
   }
 });
 
