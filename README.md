@@ -2,6 +2,10 @@
 
 A full-stack personal finance tracking application with unique session spaces, built with React, Node.js, and PostgreSQL. No registration required - just start tracking instantly!
 
+## 🌐 Live Application
+
+**🎯 [View Live Application](https://personal-finances-track.netlify.app/)**
+
 ## 🚀 Features
 
 ### Core Features

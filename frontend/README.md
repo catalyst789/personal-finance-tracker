@@ -1,69 +1,132 @@
-# React + TypeScript + Vite
+# Personal Finance Tracker - Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is the frontend application for the Personal Finance Tracker, built with React, TypeScript, and Vite.
 
-Currently, two official plugins are available:
+## 🌐 Live Application
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+**🎯 [View Live Application](https://personal-finances-track.netlify.app/)**
 
-## Expanding the ESLint configuration
+## 🚀 Quick Start
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Prerequisites
+- Node.js 18+
+- Yarn package manager
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### Installation
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+1. **Install dependencies**
+   ```bash
+   yarn install
+   ```
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+2. **Set up environment variables**
+   ```bash
+   cp .env.example .env
+   ```
+   
+   Update `.env` with your backend API URL:
+   ```env
+   VITE_API_URL=http://localhost:3001/api
+   ```
+
+3. **Start development server**
+   ```bash
+   yarn dev
+   ```
+
+4. **Open the application**
+   - Frontend: http://localhost:5173
+
+## 🛠 Available Scripts
+
+- `yarn dev` - Start development server
+- `yarn build` - Build for production
+- `yarn preview` - Preview production build
+- `yarn test` - Run unit tests
+- `yarn lint` - Run ESLint
+- `yarn lint:fix` - Fix ESLint issues
+
+## 🏗 Tech Stack
+
+- **React 18** with TypeScript
+- **Material-UI** for UI components
+- **Redux Toolkit** for state management
+- **React Query** for server state management
+- **React Hook Form** with Yup validation
+- **Recharts** for data visualization
+- **React Router** for navigation
+- **Vite** for build tooling
+
+## 📁 Project Structure
+
+```
+frontend/
+├── src/
+│   ├── components/     # React components
+│   ├── hooks/          # Custom React hooks
+│   ├── pages/          # Page components
+│   ├── services/       # API services
+│   ├── store/          # Redux store
+│   ├── types/          # TypeScript types
+│   └── utils/          # Utility functions
+├── tests/              # Frontend tests
+└── package.json
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🚀 Deployment
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+This frontend is deployed on **Netlify** and is live at:
+**https://personal-finances-track.netlify.app/**
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Manual Deployment
+
+1. **Build the project**
+   ```bash
+   yarn build
+   ```
+
+2. **Deploy to Netlify**
+   - Connect your GitHub repository to Netlify
+   - Set build command: `yarn build`
+   - Set publish directory: `dist`
+   - Set environment variables in Netlify dashboard
+
+## 🧪 Testing
+
+```bash
+# Run unit tests
+yarn test
+
+# Run tests in watch mode
+yarn test:watch
+
+# Run tests with coverage
+yarn test:coverage
 ```
+
+## 🔧 Configuration
+
+### Environment Variables
+
+```env
+VITE_API_URL=http://localhost:3001/api
+```
+
+### Build Configuration
+
+The project uses Vite for building. Configuration can be found in:
+- `vite.config.ts` - Main Vite configuration
+- `tsconfig.json` - TypeScript configuration
+- `eslint.config.js` - ESLint configuration
+
+## 🎨 Customization
+
+### Themes
+The application uses Material-UI theming. Customize colors and styles in `src/theme/index.ts`.
+
+### Charts
+Chart configurations can be modified in `src/components/Charts.tsx`.
+
+---
+
+**Part of the Personal Finance Tracker full-stack application**
