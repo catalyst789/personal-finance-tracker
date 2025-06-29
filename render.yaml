@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: finance-tracker-backend
+    env: docker
+    region: oregon
+    plan: free
+    buildCommand: cd backend && yarn build
+    startCommand: cd backend && yarn start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3001
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_ANON_KEY
+        sync: false
+      - key: SUPABASE_SERVICE_ROLE_KEY
+        sync: false
+      - key: CORS_ORIGIN
+        value: "*"
+    healthCheckPath: /health
+    autoDeploy: true 
